@@ -1,0 +1,88 @@
+<p style="color: green"><%= notice %></p>
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <h1><i class="fas fa-box"></i> Meus Dispensers</h1>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-lg-9"> 
+            <div class="right_col mt-3" role="main">
+                <div class="row">
+                    <div class="col-md-3">
+                        <%= image_tag 'dispenser.jpg', class: 'card-img-top', alt: 'Produto 1' %>
+                    </div>
+                    <div class="col-md-9">
+                      <p>
+                        <strong>Proprietário do locker:</strong>
+                        <%= @keylocker.owner %>
+                      </p>
+                    
+                      <p>
+                        <strong>Nome do dispositivo:</strong>
+                        <%= @keylocker.nameDevice %>
+                      </p>
+                    
+                      <p>
+                        <strong>Endereço de IP:</strong>
+                        <%= @keylocker.ipAddress %>
+                      </p>
+
+                      <p>
+                        <strong>Contador de Dose:</strong>
+                        <%= @keylocker.contDose %>
+                      </p>
+
+                      <p>
+                        <strong>Quantidade da dose:</strong>
+                        <%= @keylocker.setdose %> ml
+                      </p>
+
+                      <p>
+                        <strong>Valor da dose:</strong>
+                        R$ <%= number_with_precision(@keylocker.valuedrink, precision: 2) %>
+                      </p>
+                    
+                      <p>
+                        <strong>Status:</strong>
+                        <%= button_tag class: (@keylocker.status == 'bloqueado' ? 'btn btn-danger' : 'btn btn-primary') do %>
+                          <i class="fas <%= @keylocker.status == 'bloqueado' ? 'fa-lock' : 'fa-unlock' %>"></i>
+                          <%= @keylocker.status == 'bloqueado' ? 'Bloqueado' : 'Desbloqueado' %>
+                        <% end %>                      
+                      </p>
+
+                      <div class="btn-group">
+                      <%= link_to edit_dispenser_path(@keylocker), class: "btn btn-primary mr-2" do %>
+                        <i class="fas fa-edit"></i> Editar
+                      <% end %>
+                      
+                      <%= link_to dispensers_path, class: "btn btn-secondary mr-2" do %>
+                        <i class="fas fa-arrow-left"></i> Voltar
+                      <% end %>
+                      
+                      <%= button_to @keylocker, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger mr-2" do %>
+                        <i class="fas fa-trash-alt"></i> Excluir
+                      <% end %>
+                      
+                      <%= button_to reset_counter_keylocker_path, method: :post, data: { confirm: 'Tem certeza que deseja zerar o contador?' }, class: "btn btn-success" do %>
+                        <i class="fas fa-redo"></i> Zerar Contador
+                      <% end %>
+                    </div>
+                    
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

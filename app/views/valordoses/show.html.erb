@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @valordose %>
+
+<div>
+  <%= link_to "Edit this valordose", edit_valordose_path(@valordose) %> |
+  <%= link_to "Back to valordoses", valordoses_path %>
+
+  <%= button_to "Destroy this valordose", @valordose, method: :delete %>
+</div>
