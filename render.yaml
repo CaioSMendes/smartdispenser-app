@@ -1,7 +1,7 @@
 databases:
   - name: smartdispenser-app
     databaseName: smartdispenser
-    user: caio
+    user: smartdispenser_user
     plan: free
 
 services:
